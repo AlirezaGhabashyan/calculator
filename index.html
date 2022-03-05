@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Calculator</title>
+</head>
+<body>
+        <section>
+            <div class="calculator">
+                <div id="output"></div>
+                <div class="buttons">
+                    <div class="button">C</div>
+                    <div class="button no-one">/</div>
+                    <div class="button no-one">*</div>
+                    <div class="button">&larr;</div>
+                    <div class="button">7</div>
+                    <div class="button">8</div>
+                    <div class="button">9</div>
+                    <div class="button no-one">-</div>
+                    <div class="button">4</div>
+                    <div class="button">5</div>
+                    <div class="button">6</div>
+                    <div class="button no-one">+</div>
+                    <div class="button">1</div>
+                    <div class="button">2</div>
+                    <div class="button">3</div>
+                    <div class="button no-one">.</div>
+                    <div class="button">(</div>
+                    <div class="button">0</div>
+                    <div class="button">)</div>
+                    <div id="equal" class="button">=</div>
+                </div>
+            </div>
+        </section>
+        <script src="index.js"></script>
+    </body>
+<script>
+ let output = document.getElementById('output');
+ let buttons = Array.from(document.getElementsByClassName('button'));
+ buttons.map( button => {
+    button.addEventListener('click', (e) => {
+        switch(e.target.innerText){
+            case 'C':
+                output.innerText = '';
+                break;
+            case '=':
+                try{
+                    output.innerText = eval(output.innerText);
+                } catch {
+                    output.innerText = "Error!"
+                }
+                break;
+            case '←':
+                if (output.innerText){
+                   output.innerText = output.innerText.slice(0, -1);
+                }
+                break;
+            default:
+                output.innerText += e.target.innerText;
+        }
+    });
+});
+</script>
+<script src="./calculator.js"></script>
+</body>
+</html>
